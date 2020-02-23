@@ -33,6 +33,10 @@ Please be assured that the information we are collecting will be used only in th
       .description {
         font-size: smaller;
       }
+
+      #forgetButton {
+        visibility: hidden;
+      }
     </style>
 
     <title>Register your arrival to ThoughtWorks Office</title>
@@ -65,12 +69,13 @@ Please be assured that the information we are collecting will be used only in th
               <input type="tel" class="form-control" id="inputContactNumber" name="entry.1173441773" required>
             </div>
             <div class="form-group">
-              <div class="form-check">
+              <div class="form-check clearfix">
                 <input type="checkbox" class="form-check-input" id="inputRemember" checked>
                 <label class="form-check-label" for="inputRemember">Remember my information on this device</label>
               </div>
             </div>
             <button type="submit" class="btn btn-primary px-3">Submit <small>via Google Forms</small></button>
+            <button type="button" class="btn btn-danger float-right" id="forgetButton">Forget me</button>
           </form>
         </div>
       </div>
@@ -88,12 +93,18 @@ Please be assured that the information we are collecting will be used only in th
       var inputRemember = document.getElementById("inputRemember");
       var storageKeyNameRemember = "remember";
 
+      var forgetButton = document.getElementById("forgetButton");
+      var form = document.getElementById("form");
+
       function loadFromStorage() {
         for (var i = 0; i < inputIds.length; i++) {
           var inputId = inputIds[i];
           var storageKeyName = storageKeyNames[inputId];
           var storedValue = localStorage.getItem(storageKeyName);
-          if (storedValue) document.getElementById(inputId).value = storedValue;
+          if (storedValue) {
+            document.getElementById(inputId).value = storedValue;
+            forgetButton.style.visibility = "visible";
+          }
         }
 
         var storedRemember = localStorage.getItem(storageKeyNameRemember);
@@ -117,6 +128,12 @@ Please be assured that the information we are collecting will be used only in th
         localStorage.setItem(storageKeyNameRemember, "false");
       }
 
+      function wipeForm() {
+        form.reset();
+        inputRemember.checked = false;
+        forgetButton.style.visibility = "hidden";
+      }
+
       function onSubmit() {
         if (!inputRemember.checked) {
           clearStorage();
@@ -125,8 +142,15 @@ Please be assured that the information we are collecting will be used only in th
         saveToStorage();
       }
 
+      function onForget() {
+        if (!confirm("Remove your information from this device?")) return;
+        clearStorage();
+        wipeForm();
+      }
+
       loadFromStorage();
-      document.getElementById("form").onsubmit = onSubmit;
+      form.onsubmit = onSubmit;
+      forgetButton.onclick = onForget;
     </script>
   </body>
 </html>
