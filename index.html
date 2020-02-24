@@ -30,12 +30,12 @@ Please be assured that the information we are collecting will be used only in th
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-      .description {
-        font-size: smaller;
-      }
-
       #forgetButton {
         visibility: hidden;
+      }
+
+      footer {
+        font-size: smaller;
       }
     </style>
 
@@ -46,11 +46,8 @@ Please be assured that the information we are collecting will be used only in th
       <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-8 col-md-10">
           <h2 class="py-2">Register your arrival to ThoughtWorks Office</h2>
-          <div class="description">
-            <p>Welcome to ThoughtWorks Singapore!</p>
-            <p>As part of our efforts to ensure the safety of people visiting or working from our office, we would need to collect some of your information. This will enable us to contact you in the event an incident occurs in the office.</p>
-            <p>Please be assured that the information we are collecting will be used only in the event of an incident and only for the purposes of contact tracing.</p>
-          </div>
+          <p>Welcome to ThoughtWorks Singapore!</p>
+          <p>As part of our efforts to ensure the safety of people visiting or working from our office, we would need to collect some of your information. This will enable us to contact you in the event an incident occurs in the office.</p>
         </div>
       </div>
       <div class="row justify-content-center">
@@ -74,12 +71,21 @@ Please be assured that the information we are collecting will be used only in th
                 <label class="form-check-label" for="inputRemember">Remember my information on this device</label>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary px-3">Submit <small>via Google Forms</small></button>
-            <button type="button" class="btn btn-danger float-right" id="forgetButton">Forget me</button>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary px-3">Submit <small>via Google Forms</small></button>
+              <button type="button" class="btn btn-danger float-right" id="forgetButton">Forget me</button>
+            </div>
           </form>
         </div>
       </div>
-      <footer class="pb-3"></footer>
+      <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8 col-md-10">
+          <footer class="pt-2 text-muted">
+            <strong>Information regarding Personal Data Collection:</strong>
+            <p>Please be assured that the information we are collecting will be used only in the event of an incident and only for the purposes of contact tracing. For more information, please refer to <a href="https://www.ifaq.gov.sg/pdpc/mobile/index.aspx#DetailDoc/2110433" target="_blank">this PDPC FAQ</a>.</p>
+          </footer>
+        </div>
+      </div>
     </div>
 
     <script type="text/javascript">
