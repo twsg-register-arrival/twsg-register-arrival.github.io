@@ -171,6 +171,15 @@ Please be assured that the information we are collecting will be used only in th
       function isFormValid() {
         if (typeof form.reportValidity === "function") return form.reportValidity();
         if (typeof form.checkValidity === "function") return form.checkValidity();
+
+        for (var i = 0; i < inputIds.length; i++) {
+          var inputId = inputIds[i];
+          var inputElement = document.getElementById(inputId);
+          if (!inputElement.value) {
+            inputElement.focus();
+            return false;
+          }
+        }
         return true;
       }
 
