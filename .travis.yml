@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - lts/dubnium
+
+script:
+  - npm run lint
+  - npm start &
+  - npm test
