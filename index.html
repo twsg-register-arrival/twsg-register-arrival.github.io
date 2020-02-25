@@ -97,7 +97,7 @@ Please be assured that the information we are collecting will be used only in th
         "inputFullName": "fullName",
         "inputIdNumber": "idNumber",
         "inputContactNumber": "contactNumber"
-      }
+      };
       var inputIds = Object.keys(storageKeyNames);
 
       var inputRemember = document.getElementById("inputRemember");
@@ -105,6 +105,12 @@ Please be assured that the information we are collecting will be used only in th
 
       var forgetButton = document.getElementById("forgetButton");
       var form = document.getElementById("form");
+
+      if (typeof String.prototype.trim !== "function") {
+        String.prototype.trim = function() {
+          return this.replace(/^\s+|\s+$/g, "");
+        };
+      }
 
       function loadFromStorage() {
         for (var i = 0; i < inputIds.length; i++) {
@@ -144,7 +150,23 @@ Please be assured that the information we are collecting will be used only in th
         forgetButton.style.visibility = "hidden";
       }
 
+      function sanitiseForm() {
+        for (var i = 0; i < inputIds.length; i++) {
+          var inputId = inputIds[i];
+          var inputElement = document.getElementById(inputId);
+          inputElement.value = inputElement.value.trim();
+        }
+      }
+
+      function isFormValid() {
+        if (typeof form.reportValidity !== "function") return form.checkValidity();
+        return form.reportValidity();
+      }
+
       function onSubmit() {
+        sanitiseForm();
+        if (!isFormValid()) return false;
+
         if (!inputRemember.checked) {
           clearStorage();
           return;
