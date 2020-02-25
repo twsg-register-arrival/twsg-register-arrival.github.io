@@ -4,7 +4,7 @@ A simple wrapper around a Google Form that caches form data in local storage to 
 ## Develop
 - Install: `npm install`
 - Run: `npm start`
-- Test: `npm test`
+- Test: `npm test` or `HEADLESS=false npm test`
 - Lint: `npm run lint`
 
 ## Publish
