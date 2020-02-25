@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "es6": false
+  },
+  "extends": [
+    "google"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 3
+  },
+  "plugins": [
+    "html"
+  ],
+  "rules": {
+    "no-var": "off",
+    "comma-dangle": "off",
+    "require-jsdoc": "off"
+  }
+}

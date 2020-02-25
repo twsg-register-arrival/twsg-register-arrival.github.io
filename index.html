@@ -93,34 +93,35 @@ Please be assured that the information we are collecting will be used only in th
     </div>
 
     <script type="text/javascript">
-      if (typeof Object.keys !== "function") {
+      /* eslint-disable */
+      if (typeof Object.keys !== 'function') {
         Object.keys = function(o) {
-          if (o !== Object(o))
-            throw new TypeError("Object.keys called on a non-object");
-          var k=[],p;
-          for (p in o) if (Object.prototype.hasOwnProperty.call(o,p)) k.push(p);
+          if (o !== Object(o)) throw new TypeError('Object.keys called on a non-object');
+          var k = [], p;
+          for (p in o) if (Object.prototype.hasOwnProperty.call(o, p)) k.push(p);
           return k;
         };
       }
 
-      if (typeof String.prototype.trim !== "function") {
+      if (typeof String.prototype.trim !== 'function') {
         String.prototype.trim = function() {
-          return this.replace(/^\s+|\s+$/g, "");
+          return this.replace(/^\s+|\s+$/g, '');
         };
       }
+      /* eslint-enable */
 
       var storageKeyNames = {
-        "inputFullName": "fullName",
-        "inputIdNumber": "idNumber",
-        "inputContactNumber": "contactNumber"
+        'inputFullName': 'fullName',
+        'inputIdNumber': 'idNumber',
+        'inputContactNumber': 'contactNumber'
       };
       var inputIds = Object.keys(storageKeyNames);
 
-      var inputRemember = document.getElementById("inputRemember");
-      var storageKeyNameRemember = "remember";
+      var inputRemember = document.getElementById('inputRemember');
+      var storageKeyNameRemember = 'remember';
 
-      var forgetButton = document.getElementById("forgetButton");
-      var form = document.getElementById("form");
+      var forgetButton = document.getElementById('forgetButton');
+      var form = document.getElementById('form');
 
       function loadFromStorage() {
         for (var i = 0; i < inputIds.length; i++) {
@@ -129,7 +130,7 @@ Please be assured that the information we are collecting will be used only in th
           var storedValue = localStorage.getItem(storageKeyName);
           if (storedValue) {
             document.getElementById(inputId).value = storedValue;
-            forgetButton.style.visibility = "visible";
+            forgetButton.style.visibility = 'visible';
           }
         }
 
@@ -145,36 +146,34 @@ Please be assured that the information we are collecting will be used only in th
           localStorage.setItem(storageKeyName, inputValue);
         }
 
-        localStorage.setItem(storageKeyNameRemember, "true");
+        localStorage.setItem(storageKeyNameRemember, 'true');
       }
 
       function clearStorage() {
         localStorage.clear();
 
-        localStorage.setItem(storageKeyNameRemember, "false");
+        localStorage.setItem(storageKeyNameRemember, 'false');
       }
 
       function wipeForm() {
         form.reset();
         inputRemember.checked = false;
-        forgetButton.style.visibility = "hidden";
+        forgetButton.style.visibility = 'hidden';
       }
 
       function sanitiseForm() {
         for (var i = 0; i < inputIds.length; i++) {
-          var inputId = inputIds[i];
-          var inputElement = document.getElementById(inputId);
+          var inputElement = document.getElementById(inputIds[i]);
           inputElement.value = inputElement.value.trim();
         }
       }
 
       function isFormValid() {
-        if (typeof form.reportValidity === "function") return form.reportValidity();
-        if (typeof form.checkValidity === "function") return form.checkValidity();
+        if (typeof form.reportValidity === 'function') return form.reportValidity();
+        if (typeof form.checkValidity === 'function') return form.checkValidity();
 
         for (var i = 0; i < inputIds.length; i++) {
-          var inputId = inputIds[i];
-          var inputElement = document.getElementById(inputId);
+          var inputElement = document.getElementById(inputIds[i]);
           if (!inputElement.value) {
             inputElement.focus();
             return false;
@@ -195,7 +194,7 @@ Please be assured that the information we are collecting will be used only in th
       }
 
       function onForget() {
-        if (!confirm("Remove your information from this device?")) return;
+        if (!confirm('Remove your information from this device?')) return;
         clearStorage();
         wipeForm();
       }

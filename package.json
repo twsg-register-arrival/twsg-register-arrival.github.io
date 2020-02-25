@@ -1,0 +1,15 @@
+{
+  "name": "twsg-register-arrival.github.io",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx serve",
+    "test": "npm run lint",
+    "lint": "npx eslint --ext .html ."
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-html": "^6.0.0",
+    "serve": "^11.3.0"
+  }
+}
