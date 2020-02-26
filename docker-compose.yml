@@ -1,0 +1,12 @@
+version: "3"
+services:
+  web:
+    image: nginx
+    volumes:
+    - .:/usr/share/nginx/html
+    ports:
+    - "5000:80"
+  browser:
+    image: browserless/chrome
+    ports:
+    - "3000:3000"

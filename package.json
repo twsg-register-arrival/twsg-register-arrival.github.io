@@ -2,8 +2,11 @@
   "name": "twsg-register-arrival.github.io",
   "version": "1.0.0",
   "scripts": {
-    "start": "npx serve",
-    "test": "npx mocha test.js --timeout 15000",
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "test": "npm run test:flows && npm run test:screenshot",
+    "test:flows": "npx mocha tests/flows.js --timeout 15000",
+    "test:screenshot": "npx mocha tests/screenshot.js",
     "lint": "npx eslint --ext .js,.html ."
   },
   "devDependencies": {
@@ -11,7 +14,6 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-html": "^6.0.0",
     "mocha": "^7.0.1",
-    "serve": "^11.3.0",
     "taiko": "^1.0.3"
   }
 }

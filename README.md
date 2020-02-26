@@ -4,10 +4,15 @@ A simple wrapper around a Google Form that caches form data in local storage to 
 ## Develop
 - Install: `npm install`
 - Run: `npm start`
-- Test: `npm test` or `HEADLESS=false npm test`
+- Test: `npm test`
+- Observe tests: `HEADLESS=false npm test`
+- Stop: `npm stop`
 - Lint: `npm run lint`
 
 ## Publish
-When making edits that change the appearance of the page, do update [`thumb.png`](thumb.png)
-which is used as the [preview image](https://developers.facebook.com/docs/sharing/webmasters/#basic):
+Note that[`thumb.png`](thumb.png) is a screenshot used as the
+[OpenGraph preview image](https://developers.facebook.com/docs/sharing/webmasters/#basic):
 ![Screenshot](thumb.png)
+
+This is automatically updated if changes are detected when running the screenshot test.
+A [browserless](https://github.com/browserless/chrome) container is used to ensure consistency in generation of screenshots.

@@ -1,8 +1,12 @@
 language: node_js
 node_js:
   - lts/dubnium
+services:
+  - docker
+
+before_script:
+  - npm start
 
 script:
-  - npm run lint
-  - npm start &
   - npm test
+  - npm run lint
