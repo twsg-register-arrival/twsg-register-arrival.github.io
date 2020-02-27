@@ -1,23 +1,29 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const configMap = require('./configMap.json');
 
-module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: __dirname + '/dist',
-    filename: 'useless.js'
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      chunks: [],
-      data: {
-        appUrl: 'https://twsg-register-arrival.github.io/',
-        formId: '1FAIpQLSdWfWAbay30b8uQsBUHpaNUxOZfVx0W8CsP9AZd2N_1LQcQMg'
-      }
-    }),
-    new CopyPlugin([{
-      from: 'src/thumb.png'
-    }])
-  ]
+module.exports = () => {
+  const targetEnv = process.env.ENV || 'production';
+  const { appUrl, formId } = configMap[targetEnv];
+
+  console.log(`Building for ${targetEnv}\nApp URL: ${appUrl}\nForm ID: ${formId}\n`);
+
+  return {
+    entry: './src/index.js',
+    output: {
+      path: __dirname + '/dist',
+      filename: 'useless.js'
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        chunks: [],
+        data: { appUrl, formId }
+      }),
+      new CopyPlugin([
+        { from: 'src/thumb.png' }
+      ])
+    ],
+    mode: 'production'
+  };
 };

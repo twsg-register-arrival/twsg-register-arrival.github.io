@@ -1,0 +1,10 @@
+{
+  "staging": {
+    "appUrl": "https://vps.whipermr5.com/form/",
+    "formId": "1FAIpQLSdyfgWeS6RlyBTFvqI05BUDSYAtteR1N3c59D-YN3oD1bUNTQ"
+  },
+  "production": {
+    "appUrl": "https://twsg-register-arrival.github.io/",
+    "formId": "1FAIpQLSdWfWAbay30b8uQsBUHpaNUxOZfVx0W8CsP9AZd2N_1LQcQMg"
+  }
+}
