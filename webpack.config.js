@@ -9,14 +9,15 @@ module.exports = () => {
   console.log(`Building for ${targetEnv}\nApp URL: ${appUrl}\nForm ID: ${formId}\n`);
 
   return {
-    entry: './src/index.js',
+    entry: './src/dummy.js',
     output: {
       path: __dirname + '/dist',
-      filename: 'useless.js'
+      filename: 'index.html' // to be overwritten
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: 'src/index.html',
+        filename: 'index.html',
         chunks: [],
         data: { appUrl, formId }
       }),

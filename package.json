@@ -8,7 +8,7 @@
     "test:flows": "mocha tests/flows.js --timeout 15000",
     "test:screenshot": "mocha tests/screenshot.js",
     "lint": "eslint --ext .js,.html src",
-    "build": "webpack && rm dist/useless.js"
+    "build": "webpack"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
