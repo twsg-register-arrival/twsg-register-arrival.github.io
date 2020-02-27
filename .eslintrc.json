@@ -16,6 +16,9 @@
   "plugins": [
     "html"
   ],
+  "ignorePatterns": [
+    "dist/"
+  ],
   "rules": {
     "no-var": "off",
     "comma-dangle": "off",

@@ -7,8 +7,8 @@ module.exports = () => {
   const config = configMap[targetEnv];
 
   console.log(`Building for ${targetEnv}`);
-  for (let key in config) {
-    console.log(`${key}: '${config[key]}'`);
+  for (const [key, value] of Object.entries(config)) {
+    console.log(`${key}: '${value}'`);
   }
   console.log();
 
@@ -26,9 +26,12 @@ module.exports = () => {
         config
       }),
       new CopyPlugin([
-        { from: 'src/thumb.png' }
+        {from: 'src/thumb.png'}
       ])
     ],
-    mode: 'production'
+    mode: 'production',
+    devServer: {
+      contentBase: './dist'
+    }
   };
 };

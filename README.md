@@ -3,11 +3,17 @@ A simple wrapper around a Google Form that caches form data in local storage to 
 
 ## Develop
 - Install: `npm install`
-- Run: `npm start`
-- Test: `npm test`
-- Observe tests: `HEADLESS=false npm test`
-- Stop: `npm stop`
+- Run:
+  - With webpack dev server: `npm start` (port 8080)
+  - With docker-compose: `npm run start:docker` (port 5000)
+- Test:
+  - All: `npm test`
+  - Flows: `npm run test:flows`
+    (pass env `HEADLESS=false` to observe)
+  - Screenshot: `npm run test:screenshot`
 - Lint: `npm run lint`
+- Build: `npm run build`
+  (pass env `ENV=staging` to use staging values in [`configMap.json`](configMap.json))
 
 ## Publish
 Note that[`thumb.png`](src/thumb.png) is a screenshot used as the
