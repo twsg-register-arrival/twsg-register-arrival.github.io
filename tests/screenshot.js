@@ -8,7 +8,7 @@ const APP_URL = 'http://web';
 const BROWSER_OPTIONS = {
   host: 'localhost', port: 3000, args: ['--hide-scrollbars']
 };
-const THUMB_FILE = 'thumb.png';
+const THUMB_FILE = 'src/thumb.png';
 
 describe('OpenGraph image preview', () => {
   const width = 1200;

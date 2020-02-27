@@ -2,18 +2,23 @@
   "name": "twsg-register-arrival.github.io",
   "version": "1.0.0",
   "scripts": {
-    "start": "docker-compose up -d",
+    "start": "npm run build && docker-compose up -d",
     "stop": "docker-compose down",
     "test": "npm run test:flows && npm run test:screenshot",
-    "test:flows": "npx mocha tests/flows.js --timeout 15000",
-    "test:screenshot": "npx mocha tests/screenshot.js",
-    "lint": "npx eslint --ext .js,.html ."
+    "test:flows": "mocha tests/flows.js --timeout 15000",
+    "test:screenshot": "mocha tests/screenshot.js",
+    "lint": "eslint --ext .js,.html src",
+    "build": "webpack && rm dist/useless.js"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-html": "^6.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "mocha": "^7.0.1",
-    "taiko": "^1.0.3"
+    "taiko": "^1.0.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
   }
 }

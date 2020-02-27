@@ -10,9 +10,9 @@ A simple wrapper around a Google Form that caches form data in local storage to 
 - Lint: `npm run lint`
 
 ## Publish
-Note that[`thumb.png`](thumb.png) is a screenshot used as the
+Note that[`thumb.png`](src/thumb.png) is a screenshot used as the
 [OpenGraph preview image](https://developers.facebook.com/docs/sharing/webmasters/#basic):
-![Screenshot](thumb.png)
+![Screenshot](src/thumb.png)
 
 This is automatically updated if changes are detected when running the screenshot test.
 A [browserless](https://github.com/browserless/chrome) container is used to ensure consistency in generation of screenshots.
