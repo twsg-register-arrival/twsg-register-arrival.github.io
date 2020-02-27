@@ -4,9 +4,13 @@ const configMap = require('./configMap.json');
 
 module.exports = () => {
   const targetEnv = process.env.ENV || 'production';
-  const { appUrl, formId } = configMap[targetEnv];
+  const config = configMap[targetEnv];
 
-  console.log(`Building for ${targetEnv}\nApp URL: ${appUrl}\nForm ID: ${formId}\n`);
+  console.log(`Building for ${targetEnv}`);
+  for (let key in config) {
+    console.log(`${key}: '${config[key]}'`);
+  }
+  console.log();
 
   return {
     entry: './src/dummy.js',
@@ -19,7 +23,7 @@ module.exports = () => {
         template: 'src/index.html',
         filename: 'index.html',
         chunks: [],
-        data: { appUrl, formId }
+        config
       }),
       new CopyPlugin([
         { from: 'src/thumb.png' }
