@@ -196,7 +196,7 @@ Please be assured that the information we are collecting will be used only in th
       function onForget() {
         if (!confirm('Remove your information from this device?')) return;
         clearStorage();
-        wipeForm;
+        wipeForm();
       }
 
       loadFromStorage();
