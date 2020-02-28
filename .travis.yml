@@ -7,3 +7,10 @@ services:
 script:
   - npm run lint
   - npm test
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: ./deploy.sh $GITHUB_TOKEN $TRAVIS_REPO_SLUG
+  on:
+    branch: dev
